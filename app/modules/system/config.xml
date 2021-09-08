@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<permissions>
+		<title>Config view catalogue - [Danh mục]</title>
+		<item>
+			<param>system/backend/catalogue/view</param>
+			<description>Xem</description>
+		</item>
+		<item>
+			<param>system/backend/catalogue/create</param>
+			<description>Thêm</description>
+		</item>
+		<item>
+			<param>system/backend/catalogue/update</param>
+			<description>Sửa</description>
+		</item>
+		<item>
+			<param>system/backend/catalogue/delete</param>
+			<description>Xóa</description>
+		</item>
+	</permissions>
+	<permissions>
+		<title>Config view - [Danh sách]</title>
+		<item>
+			<param>system/backend/system/view</param>
+			<description>Xem</description>
+		</item>
+		<item>
+			<param>system/backend/system/create</param>
+			<description>Thêm</description>
+		</item>
+		<item>
+			<param>system/backend/system/update</param>
+			<description>Sửa</description>
+		</item>
+		<item>
+			<param>system/backend/system/delete</param>
+			<description>Xóa</description>
+		</item>
+		
+	</permissions>
+</module>
