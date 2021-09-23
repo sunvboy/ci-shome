@@ -31,7 +31,7 @@ class ApiGHTK extends REST_Controller {
             'select' =>  'name',
             'table' => 'vn_province',
             'where' => array('provinceid' => $province),
-        ),);
+        ));
         $detailDistrict = $this->Autoload_Model->_get_where(array(
             'select' =>  'name',
             'table' => 'vn_district',
