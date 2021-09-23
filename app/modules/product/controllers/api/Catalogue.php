@@ -126,7 +126,6 @@ class Catalogue extends REST_Controller {
                 // $query = $query.' GROUP BY `tb_attr_102`.`moduleid`';
             }
             $json[] = array('catalogue_relationship as tb3', 'tb1.id = tb3.moduleid AND tb3.module = "product"', 'full');
-            $json[] = array('promotional_relationship as tb2', 'tb1.id = tb2.moduleid AND tb2.module = "product"', 'left');
 
 
 

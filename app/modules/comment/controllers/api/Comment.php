@@ -35,7 +35,7 @@ class Comment extends REST_Controller
         if(!empty($moduleid)){
             $array = array( 'module' => $module, 'detailid' => $moduleid, 'parentid' => $parentid);
         }else{
-            $array = array( 'module' => $module,  'parentid' => $parentid);
+            $array = array('parentid' => $parentid);
         }
         $totalRow = $this->Autoload_Model->_get_where(array(
             'select' => 'id',
@@ -114,15 +114,22 @@ class Comment extends REST_Controller
             }
             $this->form_validation->set_rules('comment', 'Nội dung bình luận là trường bắt buộc', 'trim|required');
             if ($this->form_validation->run($this)) {
+                $auth = $this->Autoload_Model->_get_where(array(
+                    'select' => 'id, email, fullname, email',
+                    'table' => 'customer',
+                    'where' => array(
+                        'id' => $is_valid_token['data']->id,
+                    ),
+                ));
                 $_insert = array(
                     'title' => '',
-                    'fullname' => $is_valid_token['data']->fullname,
-                    'comment' => $_POST['comment'],
-                    'email' => $is_valid_token['data']->email,
-                    'module' => !empty($_POST['module'])?$_POST['module']:'',
-                    'detailid' => !empty($_POST['moduleid'])?$_POST['moduleid']:'',
-                    'customerid' => $is_valid_token['data']->id,
+                    'customerid' => $auth['id'],
+                    'fullname' => $auth['fullname'],
+                    'email' => $auth['email'],
+                    'module' => $_POST['module'],
+                    'detailid' => $_POST['moduleid'],
                     'parentid' => isset($_POST['parentid']) ? $_POST['parentid'] : 0,
+                    'comment' => $_POST['comment'],
                     'publish' => 0,
                     'created' => gmdate('Y-m-d H:i:s', time() + 7 * 3600),
                     'alanguage' => $this->fc_lang,
